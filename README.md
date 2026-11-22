@@ -1,15 +1,15 @@
-# Purple Magic ✦
+# Purple Magic · Esoteric Blog
 
-Landing page editoriale ispirata al template fornito, ricostruita con **React 19, Vite 7 e Tailwind CSS 4**.
+Blog esoterico responsive in **React 19 + Vite 7 + Tailwind CSS 4 + React Router 7**. Estetica dark fantasy in palette lilla.
 
-## Avvio
+## Come avviarlo
 
 ```bash
 npm install
 npm run dev
 ```
 
-Apri l'indirizzo locale mostrato da Vite (normalmente http://localhost:5173).
+Apri l'indirizzo mostrato da Vite (normalmente `http://localhost:5173`).
 
 ## Build di produzione
 
@@ -18,18 +18,22 @@ npm run build
 npm run preview
 ```
 
-## Personalizzazione
+## Routing
 
-- `src/App.jsx`: contenuti, categorie, news e link delle immagini (oggetto `img` in cima al file).
-- `src/index.css`: palette, tipografia, responsive e animazioni. Tailwind 4 è attivato con `@import "tailwindcss"`.
-- `index.html`: titolo, descrizione e font Google.
+- `/` Home
+- `/blog` Archivio articoli con ricerca e filtri via query string
+- `/blog/:slug` Articoli completi
+- `/incantesimi` Archivio rituali con filtri
+- `/incantesimi/:slug` Scheda rituale con materiali e passaggi
+- `/contatti` Modulo contatti via `mailto:`
+- Qualsiasi altro percorso: pagina 404
 
-Le fotografie sono caricate tramite URL pubblici di Unsplash e richiedono Internet. Puoi scaricare immagini tue in `public/images/` e sostituire gli URL nell'oggetto `img`.
+I dati dimostrativi degli articoli e degli incantesimi sono in `src/App.jsx`, negli array `posts` e `spells`. Per aggiungere contenuti, inserire nuovi oggetti con slug univoco.
 
-### Nota sul modulo newsletter
+**Contatti:** modifica l'indirizzo `info@sofiavidotto.dev` nel componente `Contact` se non corrisponde alla tua casella effettiva. Attualmente il modulo apre il client email, senza backend e senza memorizzare dati.
 
-Il form mostra un messaggio dimostrativo in locale, **non salva le email**. Per renderlo operativo collegalo a un servizio newsletter o a un tuo endpoint API.
+**Link portfolio nel footer:** https://sofiavidotto.dev/ (Designed & Developed by Sofia Vidotto).
 
-### Cosa funziona
+Le fotografie vengono da URL Unsplash; per un sito definitivo, valuta immagini locali ottimizzate e licenze appropriate.
 
-Navigazione con ancore, menu mobile, modal delle 4 categorie, carosello editoriale, validazione front-end dell'email, layout responsive e supporto `prefers-reduced-motion`.
+Per deploy SPA con BrowserRouter serve un rewrite delle URL verso `index.html`; su Vercel è incluso `vercel.json`, su Netlify `_redirects` nella cartella `public`.
